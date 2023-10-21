@@ -30,13 +30,13 @@ const navBtnElement = document.querySelector('.nav-btn')
 
 const rolloutNavElement = document.querySelector('.rollout-nav')
 
-const containerElement = document.querySelector('.container')
-
-const neco =   document.querySelectorAll('nav > a')
 
 
 
 // posluchač - přepínám třídu nav-closed
+// Zobrazování a skrývání navigačního menu uděláme tak, že budeme prvku .rollout-nav přidávat nebo odebírat třídu nav-closed. V hlavním index.jsx vyberte ikonku .nav-btn a připojte k ní posluchač události click. Tento posluchač bude přepínat třídu nav-closed na prvku .rollout-nav. Klikáním na ikonku tak můžeme zobrazovat nebo skrývat navigaci.
+
+
 const prepinamTriduNav = () => {
   rolloutNavElement.classList.toggle('nav-closed')
 }
@@ -46,13 +46,12 @@ navBtnElement.addEventListener('click', prepinamTriduNav)
 
 
 // posluchač - pridávam třídu nav-closed na libovolný položku
+// Navigaci budeme chtít schovat i po kliknutí na odkaz na nějakou sekci. Připojte tedy další posluchač události přímo na prvek .rollout-nav. V posluchači události zařiďte, aby se navigace při kliknutí na libovolnou její položku schovala (tj. prvku .rollout-nav přidáte třídu nav-closed, obdobně, jako v předchozím kroku při přepínání).
 
-const pridamTriduNavClosed = (event) => {
+const pridamTriduNavClosed = () => {
   rolloutNavElement.classList.add('nav-closed');
 };
 
-const navElements = document.querySelectorAll('nav > a');
-navElements.forEach((navElement) => {
-  navElement.addEventListener('click', pridamTriduNavClosed);
-});
+rolloutNavElement.addEventListener('click', pridamTriduNavClosed)
+
 
