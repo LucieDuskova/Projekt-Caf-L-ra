@@ -10,7 +10,6 @@ import './index.css';
 
 
 
-
 document.querySelector('#root').innerHTML = render(
   <div className="page">
     <Header />
@@ -25,3 +24,35 @@ document.querySelector('#root').innerHTML = render(
     <Footer />
   </div>
 );
+
+// vybirám 
+const navBtnElement = document.querySelector('.nav-btn')
+
+const rolloutNavElement = document.querySelector('.rollout-nav')
+
+const containerElement = document.querySelector('.container')
+
+const neco =   document.querySelectorAll('nav > a')
+
+
+
+// posluchač - přepínám třídu nav-closed
+const prepinamTriduNav = () => {
+  rolloutNavElement.classList.toggle('nav-closed')
+}
+
+navBtnElement.addEventListener('click', prepinamTriduNav)
+
+
+
+// posluchač - pridávam třídu nav-closed na libovolný položku
+
+const pridamTriduNavClosed = (event) => {
+  rolloutNavElement.classList.add('nav-closed');
+};
+
+const navElements = document.querySelectorAll('nav > a');
+navElements.forEach((navElement) => {
+  navElement.addEventListener('click', pridamTriduNavClosed);
+});
+
