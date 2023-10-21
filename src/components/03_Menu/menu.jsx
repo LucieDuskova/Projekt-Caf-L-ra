@@ -1,96 +1,35 @@
 import './menu.css';
 import { Drink } from '../07_Drink/drink';
-import { Layer } from '../08_Layer/layer';
 
-export const Menu = () => {
-return (
-  <section className="menu" id="menu">
-  <div className="container">
-    <h2>Naše nabídka</h2>
-    <p className="menu-intro">
-      Vyberte si z našeho interaktivního menu a nemusíte čekat na obsluhu
-    </p>
-    <div className="drinks-list">
+const response = await fetch('http://localhost:4000/api/drinks');
+const dataJson = await response.json();
 
-      <Drink
-        id={0}
-        name="Espresso"
-        ordered={false}
-        image="https://localhost:4000/assets/cups/espresso.png"
+const events = dataJson.result;
 
-        layers={[
-          <Layer color="#feeeca" label="mléčná pěna" />
-        ]}
-        />
-
-      {/* <div className="drink">
-        <div className="drink__product">
-          <div className="drink__cup">
-            <img src="/cups/espresso.png" />
-          </div>
-          <div className="drink__info">
-            <h3>Espresso</h3>
-            <div className="layer">
-              <div className="layer__color" style={{ backgroundColor: '#613916' }}></div>
-              <div className="layer__label">espresso</div>
-            </div>
-          </div>
+export const Menu = ({ drinks }) => {
+  return (
+    <section className="menu" id="menu">
+      <div className="container">
+        <h2>Naše nabídka</h2>
+        <p className="menu-intro">
+          Vyberte si z našeho interaktivního menu a nemusíte čekat na obsluhu
+        </p>
+        <div className="drinks-list">
+          {events.map((event) => (
+            <Drink
+              key={event.id}
+              name={event.name}
+              ordered={event.ordered}
+              image={`http://localhost:4000${event.image}`}
+              layers={event.layers}
+            />
+          ))}
         </div>
-        <div className="drink__controls">
-          <button className="order-btn">
-            Objednat
-          </button>
+
+        <div className="order-detail">
+          <a href="/objednavka">Detail objednávky</a>
         </div>
       </div>
-
-      <div className="drink">
-        <div className="drink__product">
-          <div className="drink__cup">
-            <img src="/cups/doppio.png" />
-          </div>
-          <div className="drink__info">
-            <h3>Doppio</h3>
-            <div className="layer">
-              <div className="layer__color" style={{ backgroundColor: '#613916' }} />
-              <div className="layer__label">espresso</div>
-            </div>
-          </div>
-        </div>
-        <div className="drink__controls">
-          <button className="order-btn">
-            Objednat
-          </button>
-        </div>
-      </div>
-
-      <div className="drink">
-        <div className="drink__product">
-          <div className="drink__cup">
-            <img src="/cups/lungo.png" />
-          </div>
-          <div className="drink__info">
-            <h3>Lungo</h3>
-            <div className="layer">
-              <div className="layer__color" style={{ backgroundColor: '#b0dee1' }} />
-              <div className="layer__label">voda</div>
-            </div>
-            <div className="layer">
-              <div className="layer__color" style={{ backgroundColor: '#613916' }} />
-              <div className="layer__label">espresso</div>
-            </div>
-          </div>
-        </div>
-        <div className="drink__controls">
-          <button className="order-btn">
-            Objednat
-          </button>
-        </div>
-      </div> */}
-    </div>
-
-    <div className="order-detail">
-      <a href="/objednavka">Detail objednávky</a>
-    </div>
-  </div>
-</section>
-)}
+    </section>
+  );
+};
