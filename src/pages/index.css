@@ -1,4 +1,4 @@
-header {
+/* header {
   padding: 1rem 0 1rem 0;
   height: 5rem;
 
@@ -108,7 +108,10 @@ nav a:hover {
     text-align: center;
   }  
 }
+ */
 
+
+/* 
 
 footer {
   padding: 2rem 0;
@@ -122,7 +125,10 @@ footer {
 
   font-size: small;
   text-align: center;
-}
+} */
+
+
+
 
 .banner {
   padding-top: 0;

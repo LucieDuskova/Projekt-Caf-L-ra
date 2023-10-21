@@ -1,10 +1,13 @@
 import { render } from '@czechitas/render';
+import { Header } from '../components/01_Header/Header.jsx';
+import { Footer } from '../components/06_Footer/footer.jsx';
 import '../global.css';
 import './index.css';
 
 document.querySelector('#root').innerHTML = render(
   <div className="page">
-    <header>
+    <Header />
+    {/* <header>
       <div className="header__content container">
         <div className="site-logo"></div>
 
@@ -19,7 +22,7 @@ document.querySelector('#root').innerHTML = render(
         </div>
 
       </div>
-    </header>
+    </header> */}
     <main>
       <section className="banner">
         <div className="container">
@@ -156,12 +159,13 @@ document.querySelector('#root').innerHTML = render(
       </section>
     </main>
 
-    <footer>
+    <Footer />
+    {/* <footer>
       <div className="container">
         <div className="footer__content">
           Café Lóra je tréningový projekt v rámci Czechitas kurzu JavaScript 2
         </div>
       </div>
-    </footer>
+    </footer> */}
   </div>
 );
