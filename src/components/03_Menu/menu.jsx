@@ -1,10 +1,8 @@
 import './menu.css';
 import { Drink } from '../07_Drink/drink';
 
-const response = await fetch('http://localhost:4000/api/drinks');
-const dataJson = await response.json();
 
-const events = dataJson.result;
+
 
 export const Menu = ({ drinks }) => {
   return (
@@ -15,13 +13,13 @@ export const Menu = ({ drinks }) => {
           Vyberte si z našeho interaktivního menu a nemusíte čekat na obsluhu
         </p>
         <div className="drinks-list">
-          {events.map((event) => (
+          {drinks.map((drink) => (
             <Drink
-              key={event.id}
-              name={event.name}
-              ordered={event.ordered}
-              image={`http://localhost:4000${event.image}`}
-              layers={event.layers}
+              key={drink.id}
+              name={drink.name}
+              ordered={drink.ordered}
+              image={`http://localhost:4000${drink.image}`}
+              layers={drink.layers}
             />
           ))}
         </div>

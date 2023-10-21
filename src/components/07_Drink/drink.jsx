@@ -1,6 +1,13 @@
 import { Layer } from '../08_Layer/layer';
 
+
+
 export const Drink = ({ id, name, ordered, image, layers }) => {
+ 
+const nazevTlacitka = ordered ? 'Zrušit' : 'Objednat'
+
+const tridaTlacitka = ordered ? 'order-btn order-btn--ordered' : 'order-btn '
+
   return (
     <div className="drink">
       <div className="drink__product">
@@ -16,9 +23,9 @@ export const Drink = ({ id, name, ordered, image, layers }) => {
         </div>
       </div>
       <div className="drink__controls">
-        <form>
-          <button className="order-btn" type="submit">
-            Objednat
+        <form className="drink_form">
+          <button className={tridaTlacitka} type="submit">
+            {nazevTlacitka}
           </button>
           <input type="hidden" value={id} />
         </form>
